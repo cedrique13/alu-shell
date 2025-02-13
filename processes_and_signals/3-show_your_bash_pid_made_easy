@@ -1,3 +1,12 @@
 #!/usr/bin/env bash
-# This script shows the PID of bash processes without using ps
-cat /proc/[0-9]*/cmdline 2>/dev/null | grep -l bash | sed 's/\/proc\///' | sed 's/\/cmdline//'
+# Loop through all process directories in /proc
+for pid in /proc/[0-9]*/cmdline; do
+    # Read the process command line
+    cmd=$(cat "$pid" 2>/dev/null)
+    # Check if the command contains "bash"
+    if [[ $cmd == *bash* ]]; then
+        # Extract the PID by removing the path
+        echo "${pid#/proc/}"
+        echo "${pid%/cmdline}"
+    fi
+done

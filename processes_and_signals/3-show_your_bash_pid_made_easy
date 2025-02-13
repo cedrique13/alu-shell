@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This script shows the PID of bash processes without using ps
+cat /proc/[0-9]*/cmdline 2>/dev/null | grep -l bash | sed 's/\/proc\///' | sed 's/\/cmdline//'

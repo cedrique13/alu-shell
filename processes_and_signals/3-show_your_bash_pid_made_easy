@@ -1,12 +1,3 @@
 #!/usr/bin/env bash
-# Loop through all process directories in /proc
-for pid in /proc/[0-9]*/cmdline; do
-    # Read the process command line
-    cmd=$(cat "$pid" 2>/dev/null)
-    # Check if the command contains "bash"
-    if [[ $cmd == *bash* ]]; then
-        # Extract the PID by removing the path
-        echo "${pid#/proc/}"
-        echo "${pid%/cmdline}"
-    fi
-done
+# This script displays PID and name of processes containing the word 'bash'
+pgrep bash -l

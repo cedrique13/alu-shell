@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
-# This script displays text indefinitely and handles SIGTERM
+
+# Function to handle SIGTERM
 trap 'echo "I am invincible!!!"' SIGTERM
-while true
-do
+
+# Infinite loop with a 2-second delay
+while true; do
     echo "To infinity and beyond"
     sleep 2
 done

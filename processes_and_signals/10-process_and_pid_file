@@ -1,14 +1,7 @@
 #!/usr/bin/env bash
-# Define PID file
-PID_FILE="/var/run/myscript.pid"
-# Write the current PID to the file
-echo $$ > "$PID_FILE"
-# Handle signals
-trap 'echo "I hate the kill command"' SIGTERM
-trap 'echo "Y U no love me?!"' SIGINT
-trap 'rm -f "$PID_FILE"; exit 0' SIGQUIT SIGTERM
-# Infinite loop
-while true; do
-    echo "To infinity and beyond"
+# Writes "I am alive!" indefinitely to /tmp/my_process
+while true
+do
+    echo "I am alive!" >> /tmp/my_process
     sleep 2
 done
